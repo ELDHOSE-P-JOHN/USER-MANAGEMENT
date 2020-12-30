@@ -1,0 +1,74 @@
+<div class="jumbotron">
+    <h1 class="display-4 text-center">USER MANAGEMENT</h1>
+</div>
+
+
+
+
+<div class="col-md-12">
+    <table class="table">
+        <thead class="t-head light">
+            <tr>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>email</th>
+                 <th>phone no.</th>
+                 
+                 <th>Gender</th>
+                 <th>Active</th>
+                 <th> </th>
+
+
+            </tr></thead>
+            <tbody>
+                <tr *ngFor="let ud of service.list">
+                    <td>{{ud.firstName}}</td>
+                    <td>{{ud.lastName}}</td>
+                    <td>{{ud.email}}</td>
+                    <td>{{ud.phone}}</td>
+                    
+                    <td>{{ud.gender}}</td>
+                    <td>{{ud.active}}</td>
+                    <td>
+                      <i class="fas fa-edit"(click)="populateform(ud);showModal=true"></i>
+                        <i class="far fa-trash-alt fa-lg text-danger"(click)="onDelete(ud.userid)"></i>
+                        
+                    </td>
+                  
+                  
+                  </tr>
+
+            </tbody>
+    </table>
+</div>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="showModal=true">
+    Add User
+  </button>
+  
+  <!-- The Modal -->
+  <div class="modal" [ngClass]="{'show':showModal}" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">User Details</h4>
+          <button type="button" class="close" data-dismiss="modal" (click)="showModal=false">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <app-user-details-form></app-user-details-form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="showModal=false">CANCEL</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
